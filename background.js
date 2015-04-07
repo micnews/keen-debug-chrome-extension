@@ -28,11 +28,18 @@ function parseKeenUrl(url) {
   var queryObj = queryStringToObject(splitUrl[1]);
   var urlParts = splitUrl[0].split('/');
 
-  var data = queryObj.data.replace('%3D', '');
+  var encodedData = queryObj.data.replace('/%3D/', '');
   var collection = urlParts[urlParts.length - 1];
 
+  var parsedData;
+  try {
+    parsedData = JSON.parse(window.atob(encodedData));
+  } catch(e) {
+    parsedData = 'Error: Failed to parse data.'
+  }
+
   return {
-    data: JSON.parse(window.atob(data)),
+    data: parsedData,
     collection: collection
   }
 }

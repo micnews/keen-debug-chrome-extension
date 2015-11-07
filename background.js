@@ -56,12 +56,16 @@ chrome.browserAction.onClicked.addListener(
   }
 );
 
-chrome.webRequest.onBeforeRequest.addListener(
-    function(details, callback) {
-      if (debug) {
-        var keenData = parseKeenUrl(details.url);
-        chrome.tabs.sendMessage(details.tabId, keenData);
-      }
-    },
-    {urls: ['https://api.keen.io/*']}
-);
+chrome.storage.sync.get('keenHost', function (results) {
+  var host = results.keenHost || 'api.keen.io';
+  var urls = ['https://' + host + '/*'];
+  chrome.webRequest.onBeforeRequest.addListener(
+      function(details, callback) {
+        if (debug) {
+          var keenData = parseKeenUrl(details.url);
+          chrome.tabs.sendMessage(details.tabId, keenData);
+        }
+      },
+      { urls: urls }
+  );
+});

@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>Options for Keen Debugger</title>
+<style>
+  #status {
+    color: #4CAF50;
+    font-style: italic;
+  }
+  .options-wrapper {
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+  }
+</style>
+</head>
+<body>
+  <h1>Options</h1>
+  <div class="options-wrapper">
+    <label for="keen-host">Custom Keen Host:</label>
+    <input type="text" id="keen-host" placeholder="api.keen.io"/>
+  </div>
+  <button id="save">save</button>
+  <span id="status"></span>
+  <script type="text/javascript" src="options.js"></script>
+</body>
+</html>

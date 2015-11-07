@@ -20,8 +20,14 @@
     "http://*/*",
     "https://*/*",
     "webRequest",
-    "tabs"
+    "tabs",
+    "storage"
   ],
   "manifest_version": 2,
-  "version": "1.2"
+  "version": "1.2",
+  "options_page": "options.html",
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": true
+  }
 }

@@ -28,7 +28,10 @@ function parseKeenUrl(url) {
   var queryObj = queryStringToObject(splitUrl[1]);
   var urlParts = splitUrl[0].split('/');
 
-  var encodedData = queryObj.data.replace(/%3D/g, '');
+  var encodedData = queryObj.data
+    .replace(/%3D/g, '')
+    .replace(/%2F/g, '/');
+
   var collection = urlParts[urlParts.length - 1];
 
   var parsedData;

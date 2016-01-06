@@ -35,7 +35,7 @@ function parseKeenUrl(url) {
   try {
     parsedData = JSON.parse(window.atob(encodedData));
   } catch(e) {
-    parsedData = 'Error: Failed to parse data.' + encodedData;
+    parsedData = 'Error: Failed to parse data.';
   }
 
   return {
